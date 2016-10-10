@@ -1,3 +1,8 @@
 <p>
   <%= @user.email %>
 </p>
+<ul>
+  <% @plants.each do |plant| %>
+    <li><%= plant.name %></li>
+  <% end %>
+</ul>
