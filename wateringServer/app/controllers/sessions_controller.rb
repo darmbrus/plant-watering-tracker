@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
   def new
-    @user = User.new
+    @user = helpers.current_user
+    if @user
+      redirect_to @user
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -15,6 +20,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    reset_session
+    redirect_to '/'
   end
 
   private
