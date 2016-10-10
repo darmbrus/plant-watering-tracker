@@ -1,6 +1,7 @@
 class PlantsController < ApplicationController
   def new
-    if current_user
+    if helpers.current_user
+      render 'new'
     else
       redirect_to '/login'
     end
