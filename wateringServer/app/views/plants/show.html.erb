@@ -1,3 +1,7 @@
 <p>
   Plant show
 </p>
+<p>
+  <%= @plant.name %>
+</p>
+<%= link_to 'New watering', new_plant_watering_path(@plant) %>
