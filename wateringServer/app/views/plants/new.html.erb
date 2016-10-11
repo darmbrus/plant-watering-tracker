@@ -1,3 +1,24 @@
 <p>
   new plant
 </p>
+<%= form_for @plant do |f| %>
+  <ul>
+    <li>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </li>
+    <li>
+      <%= f.label :species %>
+      <%= f.text_field :species %>
+    </li>
+    <li>
+      <%= f.label :days_per_watering %>
+      <%= f.text_field :days_per_watering %>
+    </li>
+    <li>
+      <%= f.label :start_date %>
+      <%= f.date_select :start_date %>
+    </li>
+  </ul>
+  <%= f.submit %>
+<% end %>
