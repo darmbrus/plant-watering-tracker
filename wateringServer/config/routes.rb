@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   # TODO Clean up routes to only used paths
   resources :users
   resources :plants
-  resources :waterings
+  namespace :plants do
+    resources :waterings
+  end
 end
