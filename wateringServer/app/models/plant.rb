@@ -1,9 +1,13 @@
 class Plant < ApplicationRecord
   has_many :waterings
 
-  def latest_watering
+  def latest_watering(num = 1)
     # TODO handle no waterings
-    self.waterings.order(date: :desc).first
+    if num == 1
+      self.waterings.order(date: :desc).first
+    else
+      self.waterings.order(date: :desc).first(num)
+    end
   end
 
   def needs_water?

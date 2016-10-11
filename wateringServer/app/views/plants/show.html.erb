@@ -4,4 +4,13 @@
 <p>
   <%= @plant.name %>
 </p>
+<h2>Latest Waterings</h2>
+<ul>
+  <% @plant.latest_watering(5).each do |watering| %>
+    <li>
+      <%= watering.date %>
+      <%= watering.amount %>
+    </li>
+  <% end %>
+</ul>
 <%= link_to 'New watering', new_plant_watering_path(@plant) %>
