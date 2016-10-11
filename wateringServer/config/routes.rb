@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   # TODO Clean up routes to only used paths
   resources :users
-  resources :plants
-  namespace :plants do
+  # resources :plants
+  resources :plants do
     resources :waterings
   end
 end

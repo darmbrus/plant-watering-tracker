@@ -1,0 +1,19 @@
+<p>
+  New watering
+</p>
+<p>
+  <%= @plant.name %>
+</p>
+<%= form_for [@plant, @watering] do |f| %>
+  <ul>
+    <li>
+      <%= f.label :amount %>
+      <%= f.text_field :amount %>
+    </li>
+    <li>
+      <%= f.label :date %>
+      <%= f.date_select :date %>
+    </li>
+    <%= f.submit %>
+  </ul>
+<% end %>
