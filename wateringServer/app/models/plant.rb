@@ -1,5 +1,9 @@
 class Plant < ApplicationRecord
   has_many :waterings
+  validates :name, presence: true
+  validates :species, presence: true
+  validates :days_per_watering, presence: true, numericality: { greater_than: 0 }
+  validates :start_date, presence: true
 
   def latest_watering(num = 1)
     # TODO handle no waterings
