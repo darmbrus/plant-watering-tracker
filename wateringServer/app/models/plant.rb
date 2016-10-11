@@ -10,9 +10,17 @@ class Plant < ApplicationRecord
     end
   end
 
+  def days_since_watering
+    if self.latest_watering
+      (Date.today() - self.latest_watering.date).to_i
+    else
+      -1
+    end
+  end
+
   def needs_water?
     if self.latest_watering
-      Date.today() - self.latest_watering.date > self.days_per_watering
+      self.days_since_watering > self.days_per_watering
     else
       true
     end

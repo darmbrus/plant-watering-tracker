@@ -6,7 +6,7 @@
       <li><%= link_to "#{plant.name}", plant %></li>
         <ul>
         <% if plant.latest_watering %>
-          <li>Date: <%= plant.latest_watering.date %></li>
+          <li>Days since watering: <%= plant.days_since_watering %></li>
           <li>Amount: <%= plant.latest_watering.amount %></li>
         <% end %>
         <% if plant.needs_water? %>
