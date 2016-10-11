@@ -9,6 +9,9 @@
           <li>Date: <%= plant.latest_watering.date %></li>
           <li>Amount: <%= plant.latest_watering.amount %></li>
         <% end %>
+        <% if plant.needs_water? %>
+          <li>needs_water</li>
+        <% end %>
       </ul>
   <% end %>
 </ul>
