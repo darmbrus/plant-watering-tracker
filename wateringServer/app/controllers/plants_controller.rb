@@ -4,7 +4,6 @@ class PlantsController < ApplicationController
       @plant = Plant.new
       render 'new'
     else
-      # TODO Add errors processing to login
       redirect_to '/login'
     end
   end
@@ -16,7 +15,8 @@ class PlantsController < ApplicationController
       @plant.save
       redirect_to helpers.current_user
     else
-      # TODO Add error processing to plant save
+      @errors = @plant.errors.full_messages
+      render 'new'
     end
   end
 

@@ -1,6 +1,9 @@
 <p>
   new plant
 </p>
+
+<%= render partial: "/errors", locals: { errors: @errors} %>
+
 <%= form_for @plant do |f| %>
   <ul>
     <li>

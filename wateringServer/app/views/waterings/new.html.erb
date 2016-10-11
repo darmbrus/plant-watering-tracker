@@ -4,6 +4,9 @@
 <p>
   <%= @plant.name %>
 </p>
+
+<%= render partial: "/errors", locals: { errors: @errors} %>
+
 <%= form_for [@plant, @watering] do |f| %>
   <ul>
     <li>

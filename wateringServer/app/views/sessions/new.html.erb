@@ -1,6 +1,9 @@
 <p>
   New Session
 </p>
+
+<%= render partial: "/errors", locals: { errors: @errors} %>
+
 <%= form_for(:session, url: login_path) do |f| %>
   <%= f.label :email %>
   <%= f.email_field :email %>

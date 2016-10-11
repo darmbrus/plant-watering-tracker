@@ -13,7 +13,9 @@ class WateringsController < ApplicationController
       @watering.save
       redirect_to helpers.current_user
     else
-      # TODO Add error processing to watering save
+      @plant = Plant.find(params[:plant_id])
+      @errors = @watering.errors.full_messages
+      render 'new'
     end
   end
 
