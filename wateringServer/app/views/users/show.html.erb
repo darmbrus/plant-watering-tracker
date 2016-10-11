@@ -3,7 +3,13 @@
 </p>
 <ul>
   <% @plants.each do |plant| %>
-    <li><%= link_to "#{plant.name}", plant %></li>
+      <li><%= link_to "#{plant.name}", plant %></li>
+        <ul>
+        <% if plant.latest_watering %>
+          <li>Date: <%= plant.latest_watering.date %></li>
+          <li>Amount: <%= plant.latest_watering.amount %></li>
+        <% end %>
+      </ul>
   <% end %>
 </ul>
 <%= link_to 'New Plant', new_plant_path %>
