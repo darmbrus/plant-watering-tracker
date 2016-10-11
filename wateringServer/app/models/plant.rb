@@ -7,7 +7,10 @@ class Plant < ApplicationRecord
   end
 
   def needs_water?
-    # TODO handle no waterings
-    Date.today() - self.latest_watering.date > self.days_per_watering
+    if self.latest_watering
+      Date.today() - self.latest_watering.date > self.days_per_watering
+    else
+      true
+    end
   end
 end
