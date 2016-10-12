@@ -38,4 +38,16 @@ describe PlantsController do
         expect(assigns(:errors)). to eq ["Species can't be blank"]
     end
   end
+
+  describe 'GET #show' do
+    it 'can show a plant page' do
+      plant = Plant.create(name: "Test Name",
+                        species: "Test Species",
+                        days_per_watering: 10,
+                        start_date: Date.today()
+                        )
+      get :show, params: { id: plant.id }
+      expect(response).to render_template(:show)
+    end
+  end
 end
