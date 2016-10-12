@@ -1,6 +1,13 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
+
   def new
     @user = helpers.current_user
+
+    if flash[:error]
+      @errors = [] << flash[:error]
+    end
+
     if @user
       redirect_to @user
     else
@@ -12,6 +19,7 @@ class SessionsController < ApplicationController
     @user = User.
       find_by(email: user_params[:email]).
       try(:authenticate, user_params[:password])
+
     if @user
       session[:user_id] = @user.id
       redirect_to @user

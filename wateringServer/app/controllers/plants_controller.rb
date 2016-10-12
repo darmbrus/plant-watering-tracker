@@ -1,17 +1,13 @@
 class PlantsController < ApplicationController
   def new
-    if helpers.current_user
-      @plant = Plant.new
-      render 'new'
-    else
-      redirect_to '/login'
-    end
+    @plant = Plant.new
+    render 'new'
   end
 
   def create
     @plant = Plant.new(plant_params)
 
-    if @plant.valid? && helpers.current_user
+    if @plant.valid?
       @plant.save
       redirect_to helpers.current_user
     else
