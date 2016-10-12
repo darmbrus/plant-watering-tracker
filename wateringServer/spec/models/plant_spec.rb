@@ -7,7 +7,14 @@ describe Plant do
                           )}
   let(:user) { User.create(email: "test.user@place.com",
                            password: "testPassword")}
-  let(:watering) { Watering.new()}
+  let(:watering1) { Watering.new(amount: 100,
+                                date: Date.today()-2,
+                                user: user
+                                )}
+  let(:watering2) { Watering.new(amount: 200,
+                                date: Date.today()-1,
+                                user: user
+                                )}
 
   describe 'validations' do
     it 'can save' do
@@ -39,10 +46,40 @@ describe Plant do
     end
   end
 
-
-
   describe '#latest_watering' do
     it 'can return the latest watering'  do
+      plant.save
+      plant.waterings << watering2
+      plant.waterings << watering1
+      expect(plant.latest_watering.amount).to eq 200
+    end
+  end
+
+  describe '#days_since_watering' do
+    it 'can return the days since the last watering' do
+      plant.save
+      plant.waterings << watering1
+      expect(plant.days_since_watering).to eq 2
+    end
+  end
+
+  describe '#needs_water' do
+    it 'can return true if it has not been watering' do
+      plant.save
+      expect(plant.needs_water?).to eq true
+    end
+
+    it 'can return false if it does not need water' do
+      plant.save
+      plant.waterings << watering1
+      expect(plant.needs_water?).to eq false
+    end
+
+    it 'can return true if it needs to be watered' do
+      plant.save
+      watering1.date = Date.today() - 11
+      plant.waterings << watering1
+      expect(plant.needs_water?).to eq true
     end
   end
 end
