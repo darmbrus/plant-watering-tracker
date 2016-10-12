@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # TODO Clean up routes to only used paths
   resources :users
-  # resources :plants
   resources :plants do
-    resources :waterings
+    resources :waterings, only: [:new, :create]
   end
 end
