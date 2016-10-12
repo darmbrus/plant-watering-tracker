@@ -12,4 +12,30 @@ describe PlantsController do
       expect(response).to render_template(:new)
     end
   end
+
+  describe 'POST #create' do
+    it 'can redirect after a success' do
+      post :create, params: { plant: { name: "testName",
+        species: "testSpecies",
+        days_per_watering: 10,
+        start_date: Date.today()
+        }}
+        expect(response).to redirect_to(
+          "http://test.host/users/#{User.first.id}")
+    end
+
+    it 'can render new after a failure' do
+      post :create, params: { plant: {name: "testName"}}
+      expect(response).to render_template(:new)
+    end
+
+    it 'can pass errors back after a failure' do
+      post :create, params: { plant: { name: "testName",
+        species: "",
+        days_per_watering: 10,
+        start_date: Date.today()
+        }}
+        expect(assigns(:errors)). to eq ["Species can't be blank"]
+    end
+  end
 end
