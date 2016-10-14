@@ -19,10 +19,16 @@ describe WateringsController do
   end
 
   describe 'POST #create' do
-    it 'can create the new' do
+    it 'can create the new watering' do
       post :create, params: { plant_id: plant.id, watering: { amount: 200,
                                                               date: Date.today()}}
       expect(Watering.last.amount).to eq 200
+    end
+
+    it 'can pass errors back after a failure' do
+      post :create, params: { plant_id: plant.id, watering: { amount: 200,
+                                                              date: ""}}
+      expect(assigns(:errors)).to eq ["Date can't be blank"]
     end
   end
 end
