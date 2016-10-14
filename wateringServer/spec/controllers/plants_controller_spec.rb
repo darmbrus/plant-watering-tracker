@@ -35,7 +35,7 @@ describe PlantsController do
         days_per_watering: 10,
         start_date: Date.today()
         }}
-        expect(assigns(:errors)). to eq ["Species can't be blank"]
+        expect(assigns(:errors)).to eq ["Species can't be blank"]
     end
   end
 
