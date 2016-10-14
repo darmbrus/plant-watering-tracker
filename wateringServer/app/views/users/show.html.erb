@@ -1,18 +1,52 @@
-<p>
-  <%= @user.email %>
-</p>
-<ul>
+<h1>
+  Welcome
+</h1>
+<h2>
+  Currently logged in as: <%= @user.email %>
+</h2>
+<table>
+  <tr>
+    <th>
+      Plant Name
+    </th>
+    <th>
+      Days Since Watering
+    </th>
+    <th>
+      Amount Watered
+    </th>
+    <th>
+      Needs Water
+    </th>
+  </tr>
   <% @plants.each do |plant| %>
-      <li><%= link_to "#{plant.name}", plant %></li>
-        <ul>
+      <tr>
+        <td>
+          <%= link_to "#{plant.name}", plant %>
+        </td>
         <% if plant.latest_watering %>
-          <li>Days since watering: <%= plant.days_since_watering %></li>
-          <li>Amount: <%= plant.latest_watering.amount %></li>
+          <td>
+            <%= plant.days_since_watering %>
+          </td>
+          <td>
+            <%= plant.latest_watering.amount %>
+          </td>
+        <% else %>
+          <td>
+            N/A
+          </td>
+          <td>
+            N/A
+          </td>
         <% end %>
-        <% if plant.needs_water? %>
-          <li>Needs water</li>
-        <% end %>
-      </ul>
+        <td>
+          <% if plant.needs_water? %>
+          Yes
+          <% else %>
+          No
+          <% end %>
+        </td>
+      </tr>
   <% end %>
-</ul>
-<%= link_to 'New Plant', new_plant_path %>
+</table>
+<%= link_to 'Add New Plant', new_plant_path %>
