@@ -1,7 +1,4 @@
 class WateringsController < ApplicationController
-  def show
-  end
-
   def new
     @plant = Plant.find(params[:plant_id])
     @watering = Watering.new
