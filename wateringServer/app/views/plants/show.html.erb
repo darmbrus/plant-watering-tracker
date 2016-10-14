@@ -1,9 +1,6 @@
-<p>
-  Plant show
-</p>
-<p>
+<h1>
   <%= @plant.name %>
-</p>
+</h1>
 <h2>Latest Waterings</h2>
 <ul>
   <% @plant.latest_watering(5).each do |watering| %>
