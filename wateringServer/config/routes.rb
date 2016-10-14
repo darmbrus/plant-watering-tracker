@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users
-  resources :plants do
+  resources :users, only: [:show]
+  resources :plants, only:[:new, :create, :show] do
     resources :waterings, only: [:new, :create]
   end
 end
