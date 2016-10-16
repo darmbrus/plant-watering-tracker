@@ -13,6 +13,9 @@ void loop() {
   
   if (buttonState == HIGH) {
     Serial.println(randNum);
+    while(buttonState) {
+      buttonState = digitalRead(buttonPin);  
+    }
   }
-  delay(500);
+  delay(50);
 }
