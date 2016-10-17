@@ -15,4 +15,8 @@ Current project status:
   * Currently configured with physical button to start transfer of data through serial port
 
 Up next:
+* Configure circle CI
 * Configure arduino to read moisture data
+* Develop tests for features
+* Integrate factories for testing objects
+* Add additional CSS and styling
