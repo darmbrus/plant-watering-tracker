@@ -1,5 +1,7 @@
 # Plant-Watering Tracker
 
+[![CircleCI](https://circleci.com/gh/darmbrus/plant-watering-tracker/tree/master.svg?style=svg)](https://circleci.com/gh/darmbrus/plant-watering-tracker/tree/master)
+
 Project goals:
 * Create a rails back-end for tracking the watering of the plants in my apartment
 * Create a python script to read data from an arduino and make calls to the rails server to create records based off of that data
