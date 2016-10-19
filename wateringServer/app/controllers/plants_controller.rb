@@ -1,7 +1,6 @@
 class PlantsController < ApplicationController
   def new
     @plant = Plant.new
-    render 'new'
   end
 
   def create
@@ -12,7 +11,7 @@ class PlantsController < ApplicationController
       redirect_to helpers.current_user
     else
       @errors = @plant.errors.full_messages
-      render 'new'
+      render :new
     end
   end
 
